@@ -5,12 +5,16 @@
   align-content: center;
 }
 
+ul {
+  padding: 0px 40px;
+}
+
 li {
   list-style: none;
 }
 
 h1 {
-  padding:30px;
+  padding: 30px;
   border: 2px solid black;
   background: lightcyan;
 }
@@ -21,27 +25,27 @@ h2 {
   display: inline-block;
 }
 
-button.btn, button{
+button.btn,
+button {
   padding: 10px 25px;
   font-size: 24px;
   border-radius: 5px;
 }
 
-
 #navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background:  #352275;
+  background: #352275;
   padding: 0px 40px;
 }
 
 #navbar li {
   list-style: none;
   display: inline-block;
-  margin: 0px 40px; 
+  margin: 0px 40px;
   font-size: 22px;
-  color:white;
+  color: white;
 }
 
 div.nav-details > * {
