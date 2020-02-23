@@ -66,6 +66,19 @@ class AddMovie extends Component {
     // this.setState({ [name]: value });
   };
 
+  handleChange = e => {
+    // All our inputs have same `name` as the `state` property name.
+    let { name, value, type } = e.target;
+
+    if (type === "checkbox" && this.state[name] === false) {
+      value = true;
+    } else if (type === "checkbox" && this.state[name] === true) {
+      value = false;
+    }
+
+    this.setState({ [name]: value });
+  };
+
   render() {
     return (
       <div>
@@ -75,7 +88,7 @@ class AddMovie extends Component {
             name="title"
             type="text"
             value={this.state.title}
-            onChange={this.handleTitleInput}
+            onChange={this.handleChange}
           />
 
           <label>Director: </label>
@@ -83,7 +96,7 @@ class AddMovie extends Component {
             name="director"
             type="text"
             value={this.state.director}
-            onChange={this.handleDirectorInput}
+            onChange={e => this.handleChange(e)}
           />
 
           <label>Oscar Awarded: </label>
@@ -91,7 +104,7 @@ class AddMovie extends Component {
             name="hasOscars"
             type="checkbox"
             checked={this.state.hasOscars}
-            onChange={this.handleOscarsCheckInput}
+            onChange={e => this.handleChange(e)}
           />
 
           <label>IMDb Rating: </label>
@@ -99,7 +112,7 @@ class AddMovie extends Component {
             name="IMDbRating"
             type="text"
             value={this.state.IMDbRating}
-            onChange={this.handleRatingInput}
+            onChange={e => this.handleChange(e)}
           />
 
           <button type="submit"> Submit </button>
