@@ -15,9 +15,8 @@ class DynamicMovieList extends Component {
     this.setState({ showMovies: !this.state.showMovies });
   };
 
-  deleteMovie = movieIndex => {
-    const moviesCopy = this.state.movies;
-    moviesCopy.splice(movieIndex, 1);
+  deleteMovie = id => {
+    const moviesCopy = this.state.movies.filter(oneMovie => oneMovie.id !== id);
     this.setState({ movies: moviesCopy });
   };
 
