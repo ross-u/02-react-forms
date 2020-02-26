@@ -1,15 +1,24 @@
 // src/components/DynamicMovieList.js
 import React, { Component } from "react";
 import ImprovedCard from "./ImprovedCard";
+import AddMovie from "./AddMovie";
 
 class DynamicMovieList extends Component {
   constructor(props) {
     super();
     this.state = {
-      movies: props.moviesArray,
+      movies: props.moviesArray, // :( anti-pattern
       showMovies: true
     };
   }
+
+  addNewMovie = newMovieObj => {
+    const moviesCopy = [...this.state.movies];
+
+    moviesCopy.unshift(newMovieObj);
+
+    this.setState({ movies: moviesCopy });
+  };
 
   toggleMovies = () => {
     this.setState({ showMovies: !this.state.showMovies });
@@ -23,6 +32,9 @@ class DynamicMovieList extends Component {
   render() {
     return (
       <div>
+        <AddMovie addMovie={this.addNewMovie} secretCode="123abc" />
+        {/*  this.props.addMovie          this.props.secretCode      */}
+
         <button onClick={this.toggleMovies}>Toggle Movies</button>
 
         <ul>
@@ -32,7 +44,7 @@ class DynamicMovieList extends Component {
                   <ImprovedCard
                     key={oneMovie.id}
                     {...oneMovie}
-                    clickToDelete={() => this.deleteMovie(index)}
+                    clickToDelete={() => this.deleteMovie(oneMovie.id)}
                   />
                 );
               })
